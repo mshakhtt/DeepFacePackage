@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "DeepFacePackage",
+    platforms: [
+        .iOS(.v11)
+    ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -13,6 +16,8 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
+        // .package(url: /* package url */, from: "1.0.0"),
+        
         .package(url: "https://github.com/kewlbear/Open3D-iOS", branch: "292cadc677494ed0c1b6c500996cd25525e5b46d"),
         .package(url: "https://github.com/pvieito/PythonKit.git", branch: "master")
     ],
@@ -21,7 +26,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "DeepFacePackage",
-            dependencies: []),
+            dependencies: ["Open3D-iOS", "PythonKit"]),
         .testTarget(
             name: "DeepFacePackageTests",
             dependencies: ["DeepFacePackage"]),
