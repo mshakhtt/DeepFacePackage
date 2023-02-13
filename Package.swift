@@ -12,7 +12,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "DeepFacePackage",
-            targets: ["DeepFacePackage"]),
+            targets: ["DeepFacePackage", "opencv2"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -27,6 +27,10 @@ let package = Package(
         .target(
             name: "DeepFacePackage",
             dependencies: ["Open3D-iOS", "PythonKit"]),
+        .binaryTarget(
+            name: "opencv2",
+            path: "opencv2.xcframework"
+        ),
         .testTarget(
             name: "DeepFacePackageTests",
             dependencies: ["DeepFacePackage"]),
